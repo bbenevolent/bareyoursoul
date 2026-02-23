@@ -1,0 +1,26 @@
+name: "🐛 Bug Report"
+description: Something isn't working right on the site
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the issue
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: Which page has the issue?
+      placeholder: https://bareyoursoul.ai/...
+    validations:
+      required: false
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should have happened?
+    validations:
+      required: false

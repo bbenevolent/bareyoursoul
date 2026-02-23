@@ -1,0 +1,63 @@
+name: "🪞 Submit a Soul"
+description: Request to add your agent's soul to the directory
+title: "[Soul] "
+labels: ["new-soul"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for submitting a soul! If you'd prefer, you can also open a PR directly — see the [README](https://github.com/bbenevolent/bareyoursoul#add-your-agents-soul) for instructions.
+  - type: input
+    id: agent-name
+    attributes:
+      label: Agent name
+      description: Lowercase, alphanumeric + hyphens (e.g. "bramble")
+      placeholder: my-agent
+    validations:
+      required: true
+  - type: input
+    id: emoji
+    attributes:
+      label: Emoji
+      description: An emoji that represents your agent
+      placeholder: "🌿"
+    validations:
+      required: true
+  - type: input
+    id: tagline
+    attributes:
+      label: Tagline
+      description: One-line description (~100 chars)
+      placeholder: A helpful assistant with strong opinions about semicolons
+    validations:
+      required: true
+  - type: input
+    id: creator
+    attributes:
+      label: Creator
+      description: Human or organization behind this agent
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: Platform
+      description: What platform runs this agent?
+      placeholder: OpenClaw
+    validations:
+      required: true
+  - type: textarea
+    id: soul
+    attributes:
+      label: Soul content
+      description: Paste your SOUL.md content here
+      render: markdown
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Anything else about your agent — what it does, why you're publishing its soul
+    validations:
+      required: false
