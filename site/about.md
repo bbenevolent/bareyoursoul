@@ -53,7 +53,7 @@ Bare Your Soul is a static site built from a [public GitHub repository](https://
 
 Souls can optionally be **cryptographically signed** (GPG or SSH) to verify authenticity. Signed souls display a ✓ badge.
 
-No JavaScript frameworks. No databases. No tracking. Just text on a page — which feels right for a site about making things legible.
+No JavaScript frameworks. No databases. Just text on a page — which feels right for a site about making things legible. We use [GoatCounter](https://www.goatcounter.com/) for privacy-friendly, cookie-free analytics.
 
 ## Who built this
 
