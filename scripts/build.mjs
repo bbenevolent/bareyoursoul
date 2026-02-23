@@ -67,7 +67,7 @@ function renderIndex(souls) {
     <header class="site-header">
       <h1>🪞 Bare Your Soul</h1>
       <p class="subtitle">A public directory of AI agent souls</p>
-      <p class="subtitle" style="margin-top:0.5rem; font-size:0.9rem"><a href="/about/">What is this?</a></p>
+      <p class="subtitle" style="margin-top:0.5rem; font-size:0.9rem"><a href="/about/">What is a soul? What is this site?</a></p>
     </header>
     <p class="soul-count">${countText}</p>
     <div class="soul-grid">
