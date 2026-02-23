@@ -1,30 +1,32 @@
-/* bareyoursoul.ai */
+/* bareyoursoul.ai — Parchment theme */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap');
+
 :root {
-  --bg: #0d1117;
-  --surface: #161b22;
-  --border: #30363d;
-  --text: #e6edf3;
-  --text-muted: #8b949e;
-  --accent: #58a6ff;
-  --accent-hover: #79c0ff;
-  --soul-glow: rgba(88, 166, 255, 0.08);
+  --bg: #faf6f0;
+  --surface: #fff8ef;
+  --border: #e0d5c5;
+  --text: #3d3229;
+  --text-muted: #8a7e72;
+  --accent: #8b6914;
+  --accent-hover: #a67c1a;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-family: 'Lora', Georgia, 'Times New Roman', serif;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.7;
   min-height: 100vh;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
 }
 
 a { color: var(--accent); text-decoration: none; }
 a:hover { color: var(--accent-hover); text-decoration: underline; }
 
 .container {
-  max-width: 800px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 2rem 1.5rem;
 }
@@ -33,66 +35,70 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .site-header {
   text-align: center;
   padding: 3rem 0 2rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px solid var(--border);
   margin-bottom: 2rem;
 }
 
 .site-header h1 {
   font-size: 2.5rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   margin-bottom: 0.5rem;
 }
 
 .site-header .subtitle {
   color: var(--text-muted);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
+  font-style: italic;
 }
 
 /* Soul cards on index */
 .soul-grid {
   display: grid;
-  gap: 1rem;
+  gap: 0;
 }
 
 .soul-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 1.5rem;
-  transition: border-color 0.2s, background 0.2s;
   display: block;
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid var(--border);
+  background: var(--surface);
   color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+  margin-bottom: 0.75rem;
 }
 
 .soul-card:hover {
-  border-color: var(--accent);
-  background: var(--soul-glow);
+  border-left-color: var(--accent);
+  background: #fff5e6;
   text-decoration: none;
   color: var(--text);
 }
 
 .soul-card .soul-name {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.15rem;
 }
 
 .soul-card .soul-tagline {
   color: var(--text-muted);
   font-size: 0.95rem;
-  margin-bottom: 0.5rem;
+  font-style: italic;
+  margin-bottom: 0.4rem;
 }
 
 .soul-card .soul-meta {
   font-size: 0.8rem;
   color: var(--text-muted);
+  font-family: 'Inter', sans-serif;
 }
 
 /* Soul detail page */
 .soul-header {
   padding: 2rem 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px solid var(--border);
   margin-bottom: 2rem;
 }
 
@@ -104,6 +110,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .soul-header .soul-tagline {
   color: var(--text-muted);
   font-size: 1.05rem;
+  font-style: italic;
   margin-top: 0.25rem;
 }
 
@@ -111,11 +118,12 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   margin-top: 0.75rem;
   font-size: 0.85rem;
   color: var(--text-muted);
+  font-family: 'Inter', sans-serif;
 }
 
 .soul-content {
   font-size: 1rem;
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
 .soul-content h1 { font-size: 1.5rem; margin: 2rem 0 0.75rem; }
@@ -130,6 +138,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   border-left: 3px solid var(--border);
   padding-left: 1rem;
   color: var(--text-muted);
+  font-style: italic;
   margin: 1rem 0;
 }
 .soul-content hr {
@@ -148,6 +157,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   display: inline-block;
   margin-bottom: 1rem;
   font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
 }
 
 .soul-actions {
@@ -165,6 +175,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.85rem;
+  font-family: 'Inter', sans-serif;
   transition: border-color 0.2s;
 }
 .copy-btn:hover { border-color: var(--accent); }
@@ -172,6 +183,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .raw-link {
   font-size: 0.85rem;
   color: var(--text-muted);
+  font-family: 'Inter', sans-serif;
 }
 .raw-link:hover { color: var(--accent); }
 
@@ -183,21 +195,27 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   border-top: 1px solid var(--border);
   color: var(--text-muted);
   font-size: 0.85rem;
+  font-family: 'Inter', sans-serif;
 }
 
 /* CTA */
 .cta {
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   padding: 1.5rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .cta p {
   color: var(--text-muted);
   margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.cta a {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
 }
 
 /* Count */
@@ -206,6 +224,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   color: var(--text-muted);
   margin-bottom: 1.5rem;
   font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
 }
 
 /* Responsive */

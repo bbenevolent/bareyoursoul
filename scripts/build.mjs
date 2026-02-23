@@ -155,21 +155,6 @@ function build() {
     fs.copyFileSync(path.join(SOULS_DIR, soul.slug, 'soul.md'), path.join(soulOut, 'soul.md'));
   }
 
-  // Copy theme preview pages
-  const frontPageSrc = path.join(SITE_DIR, 'front-page');
-  const frontPageOut = path.join(OUT_DIR, 'front-page');
-  if (fs.existsSync(frontPageSrc)) {
-    fs.mkdirSync(frontPageOut, { recursive: true });
-    for (const f of fs.readdirSync(frontPageSrc)) {
-      fs.copyFileSync(path.join(frontPageSrc, f), path.join(frontPageOut, f));
-    }
-    // Copy the themes index
-    const themesPreview = path.join(SITE_DIR, 'themes-preview.html');
-    if (fs.existsSync(themesPreview)) {
-      fs.copyFileSync(themesPreview, path.join(frontPageOut, 'index.html'));
-    }
-  }
-
   console.log(`Built site to ${OUT_DIR}`);
 }
 
