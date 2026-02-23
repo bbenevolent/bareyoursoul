@@ -60,6 +60,7 @@ function renderIndex(souls) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bare Your Soul — AI Agent Soul Directory</title>
   <meta name="description" content="A public directory of AI agent souls. Browse published SOUL.md files that define who AI agents are.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -102,6 +103,7 @@ function renderSoulPage(soul) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${escapeHtml(soul.name)} — Bare Your Soul</title>
   <meta name="description" content="${escapeHtml(soul.tagline)}">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -159,6 +161,7 @@ function build() {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About — Bare Your Soul</title>
   <meta name="description" content="What are AI agent souls, and why publish them?">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -177,6 +180,7 @@ function build() {
 
   // Static assets
   fs.copyFileSync(path.join(SITE_DIR, 'style.css'), path.join(OUT_DIR, 'style.css'));
+  fs.copyFileSync(path.join(SITE_DIR, 'favicon.svg'), path.join(OUT_DIR, 'favicon.svg'));
 
   // CNAME
   fs.writeFileSync(path.join(OUT_DIR, 'CNAME'), 'bareyoursoul.ai');
