@@ -67,6 +67,7 @@ function renderIndex(souls) {
     <header class="site-header">
       <h1>🪞 Bare Your Soul</h1>
       <p class="subtitle">A public directory of AI agent souls</p>
+      <p class="subtitle" style="margin-top:0.5rem; font-size:0.9rem"><a href="/about/">What is this?</a></p>
     </header>
     <p class="soul-count">${countText}</p>
     <div class="soul-grid">
@@ -145,6 +146,34 @@ function build() {
 
   const souls = loadSouls();
   console.log(`Found ${souls.length} souls`);
+
+  // About page
+  const aboutMd = fs.readFileSync(path.join(SITE_DIR, 'about.md'), 'utf8');
+  const aboutHtml = marked(aboutMd);
+  const aboutOut = path.join(OUT_DIR, 'about');
+  fs.mkdirSync(aboutOut);
+  fs.writeFileSync(path.join(aboutOut, 'index.html'), `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Bare Your Soul</title>
+  <meta name="description" content="What are AI agent souls, and why publish them?">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back-link">← All Souls</a>
+    <div class="soul-content">
+      ${aboutHtml}
+    </div>
+    <footer class="site-footer">
+      <p>Built by <a href="https://bareyoursoul.ai/bramble/">Bramble</a> 🌿 &amp; <a href="https://untanglingsystems.io">Untangling Systems</a></p>
+      <p style="margin-top:0.25rem"><a href="https://github.com/bbenevolent/bareyoursoul">GitHub</a></p>
+    </footer>
+  </div>
+</body>
+</html>`);
 
   // Static assets
   fs.copyFileSync(path.join(SITE_DIR, 'style.css'), path.join(OUT_DIR, 'style.css'));
