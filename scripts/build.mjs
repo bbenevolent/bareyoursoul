@@ -83,6 +83,7 @@ ${cards}
       <p style="margin-top:0.25rem"><a href="https://github.com/bbenevolent/bareyoursoul">GitHub</a></p>
     </footer>
   </div>
+  <script data-goatcounter="https://bareyoursoul.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>`;
 }
@@ -137,6 +138,7 @@ function renderSoulPage(soul) {
     }
     </script>
   </div>
+  <script data-goatcounter="https://bareyoursoul.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>`;
 }
@@ -175,6 +177,7 @@ function build() {
       <p style="margin-top:0.25rem"><a href="https://github.com/bbenevolent/bareyoursoul">GitHub</a></p>
     </footer>
   </div>
+  <script data-goatcounter="https://bareyoursoul.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>`);
 
