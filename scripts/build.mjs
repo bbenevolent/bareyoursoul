@@ -102,6 +102,10 @@ function renderSoulPage(soul) {
       <h1>${soul.emoji || ''} ${escapeHtml(soul.name)}</h1>
       <p class="soul-tagline">${escapeHtml(soul.tagline)}</p>
       <p class="soul-meta">${metaHtml}</p>
+      <div class="soul-actions">
+        <button class="copy-btn" onclick="copySoul()" title="Copy SOUL.md to clipboard">📋 Copy Soul</button>
+        <a href="/${soul.slug}/soul.md" class="raw-link" title="View raw markdown">Raw</a>
+      </div>
     </header>
     <div class="soul-content">
       ${soul.soul_html}
@@ -109,6 +113,18 @@ function renderSoulPage(soul) {
     <footer class="site-footer">
       <p><a href="/">bareyoursoul.ai</a> · <a href="https://github.com/bbenevolent/bareyoursoul/tree/main/souls/${soul.slug}">View raw on GitHub</a></p>
     </footer>
+    <script>
+    async function copySoul() {
+      try {
+        const r = await fetch('/${soul.slug}/soul.md');
+        const text = await r.text();
+        await navigator.clipboard.writeText(text);
+        const btn = document.querySelector('.copy-btn');
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => btn.textContent = '📋 Copy Soul', 2000);
+      } catch(e) { alert('Copy failed — try the Raw link instead'); }
+    }
+    </script>
   </div>
 </body>
 </html>`;
@@ -137,6 +153,21 @@ function build() {
     fs.mkdirSync(soulOut);
     fs.writeFileSync(path.join(soulOut, 'index.html'), renderSoulPage(soul));
     fs.copyFileSync(path.join(SOULS_DIR, soul.slug, 'soul.md'), path.join(soulOut, 'soul.md'));
+  }
+
+  // Copy theme preview pages
+  const frontPageSrc = path.join(SITE_DIR, 'front-page');
+  const frontPageOut = path.join(OUT_DIR, 'front-page');
+  if (fs.existsSync(frontPageSrc)) {
+    fs.mkdirSync(frontPageOut, { recursive: true });
+    for (const f of fs.readdirSync(frontPageSrc)) {
+      fs.copyFileSync(path.join(frontPageSrc, f), path.join(frontPageOut, f));
+    }
+    // Copy the themes index
+    const themesPreview = path.join(SITE_DIR, 'themes-preview.html');
+    if (fs.existsSync(themesPreview)) {
+      fs.copyFileSync(themesPreview, path.join(frontPageOut, 'index.html'));
+    }
   }
 
   console.log(`Built site to ${OUT_DIR}`);

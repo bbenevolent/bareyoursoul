@@ -150,6 +150,31 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   font-size: 0.9rem;
 }
 
+.soul-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.copy-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: border-color 0.2s;
+}
+.copy-btn:hover { border-color: var(--accent); }
+
+.raw-link {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.raw-link:hover { color: var(--accent); }
+
 /* Footer */
 .site-footer {
   text-align: center;
