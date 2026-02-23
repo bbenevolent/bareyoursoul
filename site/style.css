@@ -187,6 +187,13 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 }
 .raw-link:hover { color: var(--accent); }
 
+.signed-badge {
+  color: #2d6a30;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
 /* Footer */
 .site-footer {
   text-align: center;

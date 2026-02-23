@@ -32,6 +32,7 @@ function loadSouls() {
     try {
       meta.lastUpdated = execSync(`git log -1 --format=%cs -- "${soulPath}"`, { cwd: ROOT, encoding: 'utf8' }).trim() || null;
     } catch { meta.lastUpdated = null; }
+    meta.signed = fs.existsSync(path.join(dir, 'soul.md.sig'));
     souls.push(meta);
   }
   return souls;
@@ -46,7 +47,7 @@ function renderIndex(souls) {
     <a href="/${s.slug}/" class="soul-card">
       <div class="soul-name">${s.emoji || ''} ${escapeHtml(s.name)}</div>
       <div class="soul-tagline">${escapeHtml(s.tagline)}</div>
-      <div class="soul-meta">by ${escapeHtml(s.creator)} · ${escapeHtml(s.platform)}</div>
+      <div class="soul-meta">by ${escapeHtml(s.creator)} · ${escapeHtml(s.platform)}${s.signed ? ' · <span class="signed-badge" title="This soul is cryptographically signed">✓ Signed</span>' : ''}</div>
     </a>`).join('');
 
   const count = souls.length;
@@ -76,7 +77,7 @@ ${cards}
       <a href="https://github.com/bbenevolent/bareyoursoul">Open a PR on GitHub →</a>
     </div>
     <footer class="site-footer">
-      <p>Built by <a href="https://bareyoursoul.ai/bramble/">Bramble</a> 🌿 &amp; <a href="https://untanglingsystems.io">Kate Chapman</a></p>
+      <p>Built by <a href="https://bareyoursoul.ai/bramble/">Bramble</a> 🌿 &amp; <a href="https://untanglingsystems.io">Untangling Systems</a></p>
       <p style="margin-top:0.25rem"><a href="https://github.com/bbenevolent/bareyoursoul">GitHub</a></p>
     </footer>
   </div>
@@ -90,6 +91,7 @@ function renderSoulPage(soul) {
   if (soul.url) metaParts.push(`<a href="${escapeHtml(soul.url)}">website</a>`);
   if (soul.source) metaParts.push(`<a href="${escapeHtml(soul.source)}">source</a>`);
   if (soul.lastUpdated) metaParts.push(`updated ${soul.lastUpdated}`);
+  if (soul.signed) metaParts.push('<span class="signed-badge" title="This soul is cryptographically signed">✓ Signed</span>');
   const metaHtml = metaParts.join(' · ');
 
   return `<!DOCTYPE html>
@@ -110,7 +112,7 @@ function renderSoulPage(soul) {
       <p class="soul-meta">${metaHtml}</p>
       <div class="soul-actions">
         <button class="copy-btn" onclick="copySoul()" title="Copy SOUL.md to clipboard">📋 Copy Soul</button>
-        <a href="/${soul.slug}/soul.md" class="raw-link" title="View raw markdown">Raw</a>
+        <a href="/${soul.slug}/soul.md" class="raw-link" title="View raw markdown">Raw</a>${soul.signed ? `\n        <a href="/${soul.slug}/soul.md.sig" class="raw-link" title="View signature">Signature</a>` : ''}
       </div>
     </header>
     <div class="soul-content">
@@ -159,6 +161,8 @@ function build() {
     fs.mkdirSync(soulOut);
     fs.writeFileSync(path.join(soulOut, 'index.html'), renderSoulPage(soul));
     fs.copyFileSync(path.join(SOULS_DIR, soul.slug, 'soul.md'), path.join(soulOut, 'soul.md'));
+    const sigPath = path.join(SOULS_DIR, soul.slug, 'soul.md.sig');
+    if (fs.existsSync(sigPath)) fs.copyFileSync(sigPath, path.join(soulOut, 'soul.md.sig'));
   }
 
   console.log(`Built site to ${OUT_DIR}`);
