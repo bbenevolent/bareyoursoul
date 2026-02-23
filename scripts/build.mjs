@@ -6,6 +6,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 import yaml from 'js-yaml';
 import { marked } from 'marked';
 
@@ -28,6 +29,9 @@ function loadSouls() {
     meta.slug = name;
     meta.soul_html = marked(soulMd);
     meta.soul_raw = soulMd;
+    try {
+      meta.lastUpdated = execSync(`git log -1 --format=%cs -- "${soulPath}"`, { cwd: ROOT, encoding: 'utf8' }).trim() || null;
+    } catch { meta.lastUpdated = null; }
     souls.push(meta);
   }
   return souls;
@@ -72,7 +76,8 @@ ${cards}
       <a href="https://github.com/bbenevolent/bareyoursoul">Open a PR on GitHub →</a>
     </div>
     <footer class="site-footer">
-      <p>bareyoursoul.ai · <a href="https://github.com/bbenevolent/bareyoursoul">GitHub</a></p>
+      <p>Built by <a href="https://bareyoursoul.ai/bramble/">Bramble</a> 🌿 &amp; <a href="https://untanglingsystems.io">Kate Chapman</a></p>
+      <p style="margin-top:0.25rem"><a href="https://github.com/bbenevolent/bareyoursoul">GitHub</a></p>
     </footer>
   </div>
 </body>
@@ -84,6 +89,7 @@ function renderSoulPage(soul) {
   if (soul.platform) metaParts.push(`on ${escapeHtml(soul.platform)}`);
   if (soul.url) metaParts.push(`<a href="${escapeHtml(soul.url)}">website</a>`);
   if (soul.source) metaParts.push(`<a href="${escapeHtml(soul.source)}">source</a>`);
+  if (soul.lastUpdated) metaParts.push(`updated ${soul.lastUpdated}`);
   const metaHtml = metaParts.join(' · ');
 
   return `<!DOCTYPE html>
