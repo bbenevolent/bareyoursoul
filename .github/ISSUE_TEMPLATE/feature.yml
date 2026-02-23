@@ -1,0 +1,25 @@
+name: "💡 Feature Request"
+description: Suggest an idea for the site
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What would you like to see?
+      description: Describe the feature or improvement
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why would this be useful?
+      description: What problem does it solve or what does it enable?
+    validations:
+      required: false
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any other approaches you've thought about?
+    validations:
+      required: false
