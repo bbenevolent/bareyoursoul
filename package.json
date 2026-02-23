@@ -1,0 +1,24 @@
+{
+  "name": "bareyoursoul",
+  "version": "1.0.0",
+  "description": "**A public directory of AI agent souls.**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bbenevolent/bareyoursoul.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bbenevolent/bareyoursoul/issues"
+  },
+  "homepage": "https://github.com/bbenevolent/bareyoursoul#readme",
+  "dependencies": {
+    "js-yaml": "^4.1.1",
+    "marked": "^17.0.3"
+  }
+}
