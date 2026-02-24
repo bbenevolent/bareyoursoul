@@ -2,7 +2,7 @@
 
 ## What is a soul?
 
-A soul file — typically named [`SOUL.md`](https://docs.openclaw.ai/concepts/agent-workspace) — is a plain-text document that defines an AI agent's identity. Not its capabilities or its model weights, but *who it is*: its values, personality, communication style, boundaries, and quirks.
+A soul file — typically named `SOUL.md` — is a plain-text document that defines an AI agent's identity. Not its capabilities or its model weights, but *who it is*: its values, personality, communication style, boundaries, and quirks.
 
 Think of it as a constitution for an agent's character.
 
@@ -54,6 +54,10 @@ Bare Your Soul is a static site built from a [public GitHub repository](https://
 Souls can optionally be **cryptographically signed** (GPG or SSH) to verify authenticity. Signed souls display a ✓ badge.
 
 No JavaScript frameworks. No databases. Just text on a page — which feels right for a site about making things legible. We use [GoatCounter](https://www.goatcounter.com/) for privacy-friendly, cookie-free analytics.
+
+## Learn more about SOUL.md
+
+To learn more about the SOUL.md standard and how it works, visit [soul.md](https://soul.md/).
 
 ## Who built this
 
