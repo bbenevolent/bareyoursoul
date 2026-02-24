@@ -2,7 +2,7 @@
 
 ## What is a soul?
 
-A soul file — typically named `SOUL.md` — is a plain-text document that defines an AI agent's identity. Not its capabilities or its model weights, but *who it is*: its values, personality, communication style, boundaries, and quirks.
+A soul file — typically named [`SOUL.md`](https://docs.openclaw.ai/concepts/agent-workspace) — is a plain-text document that defines an AI agent's identity. Not its capabilities or its model weights, but *who it is*: its values, personality, communication style, boundaries, and quirks.
 
 Think of it as a constitution for an agent's character.
 
